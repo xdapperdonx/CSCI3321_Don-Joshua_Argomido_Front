@@ -1,0 +1,40 @@
+.container{
+    width: 800px;
+    height: 450px;
+    border-style: solid;
+    border-color: black;
+}
+
+#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8{
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    background: hotpink;
+    border-style: solid;
+    border-color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px
+}
+
+.container:hover #box1, .container:hover #box3, .container:hover #box5, .container:hover #box7, .container:hover #box9{
+    animation: odd 1s ease-in forwards;
+}
+
+.container:hover #box2, .container:hover #box4, .container:hover #box6, .container:hover #box8{
+    animation: even 1s ease-in forwards;
+}
+
+@keyframes odd{
+    100%{
+        transform: translateX(250px) rotate(-1080deg) scale(0.75);
+        background-color: #2AB67B;
+    }
+}
+
+@keyframes even{
+    100%{
+        transform: translateX(-250px) rotate(1080deg) scale(2);
+        background-color: #11A7BB;
+    }
+}

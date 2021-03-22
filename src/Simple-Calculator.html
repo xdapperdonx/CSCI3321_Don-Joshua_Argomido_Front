@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../style/simple-calculator-style.css">
+		<script src=""></script>
+		<title>Simple Calculator</title>
+        <script>
+            function updateDisplay(newValue){
+                //find display box
+                var d = document.getElementById('display');
+
+                switch(newValue){
+                    case '0':
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                        d.innerHTML += newValue;
+                        break;
+                    case 'AC':
+                        d.innerHTML = "";
+                        break;
+                    case '+':
+
+                        if (d.innerHTML != "" && d.innerHTML.endsWith("+") == false && d.innerHTML.endsWith("-") == false && d.innerHTML.endsWith("*") == false && d.innerHTML.endsWith("/") == false){
+                            d.innerHTML += "+";
+                            break;
+                        }
+
+                    case '-':
+
+                        if (d.innerHTML != "" && d.innerHTML.endsWith("+") == false && d.innerHTML.endsWith("-") == false &&  d.innerHTML.endsWith("*") == false && d.innerHTML.endsWith("/") == false){
+                                d.innerHTML += "-";
+                                break;
+                            }
+
+                    case '*':
+
+                        if (d.innerHTML != "" && d.innerHTML.endsWith("+") == false && d.innerHTML.endsWith("-") == false &&  d.innerHTML.endsWith("*") == false && d.innerHTML.endsWith("/") == false){
+                                d.innerHTML += "*";
+                                break;
+                            }
+
+                    case '/':
+
+                        if (d.innerHTML != "" && d.innerHTML.endsWith("+") == false && d.innerHTML.endsWith("-") == false &&  d.innerHTML.endsWith("*") == false && d.innerHTML.endsWith("/") == false){
+                                d.innerHTML += "/";
+                                break;
+                            }
+
+                    case '=':
+
+                        if (d.innerHTML.endsWith("+") == true || d.innerHTML.endsWith("-") == true ||  d.innerHTML.endsWith("*") == true || d.innerHTML.endsWith("/") == true){
+                            d.innerHTML = "Err";
+                        }
+                        else{
+                            result = eval(d.innerHTML)
+                            if(result == undefined){
+                                d.innerHTML == "";
+                                break;
+                            }
+                            else{
+                                d.innerHTML = result;
+                                break;
+                            }
+                        }
+                }
+            }
+        </script>
+	</head>
+	
+	<body>
+		<div id = "container">
+            <div id = "display"></div>
+            <div class="key plus"onclick="updateDisplay('+')">+</div>
+            <div class="key minus"onclick="updateDisplay('-')">-</div>
+            <div class="key mulitply"onclick="updateDisplay('*')">*</div>
+            <div class="key divide"onclick="updateDisplay('/')">/</div>
+            <div class="key digit-7"onclick="updateDisplay('7')">7</div>
+            <div class="key digit-8"onclick="updateDisplay('8')">8</div>
+            <div class="key digit-9"onclick="updateDisplay('9')">9</div>
+            <div class="key digit-4"onclick="updateDisplay('4')">4</div>
+            <div class="key digit-5"onclick="updateDisplay('5')">5</div>
+            <div class="key digit-6"onclick="updateDisplay('6')">6</div>
+            <div class="key digit-1"onclick="updateDisplay('1')">1</div>
+            <div class="key digit-2"onclick="updateDisplay('2')">2</div>
+            <div class="key digit-3"onclick="updateDisplay('3')">3</div>
+            <div class="key digit-0"onclick="updateDisplay('0')">0</div>
+            <div class="key equal-key"onclick="updateDisplay('=')">=</div>
+            <div class="key clear-key"onclick="updateDisplay('AC')">AC</div>
+        </div>
+	</body>
+	
+</html>
