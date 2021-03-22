@@ -11,6 +11,8 @@
                 var d = document.getElementById('display');
 
                 switch(newValue){
+
+                    //appends selected value
                     case '0':
                     case '1':
                     case '2':
@@ -23,9 +25,13 @@
                     case '9':
                         d.innerHTML += newValue;
                         break;
+                    
+                    //clears display
                     case 'AC':
                         d.innerHTML = "";
                         break;
+
+                    //adds operators to display
                     case '+':
 
                         if (d.innerHTML != "" && d.innerHTML.endsWith("+") == false && d.innerHTML.endsWith("-") == false && d.innerHTML.endsWith("*") == false && d.innerHTML.endsWith("/") == false){
@@ -54,13 +60,19 @@
                                 break;
                             }
 
+                    //calculates strings
                     case '=':
-
+                        
+                        //error checking
                         if (d.innerHTML.endsWith("+") == true || d.innerHTML.endsWith("-") == true ||  d.innerHTML.endsWith("*") == true || d.innerHTML.endsWith("/") == true){
                             d.innerHTML = "Err";
                         }
                         else{
+
+                            //used to calculate string
                             result = eval(d.innerHTML)
+
+                            //error checking
                             if(result == undefined){
                                 d.innerHTML == "";
                                 break;
