@@ -11,15 +11,18 @@
         "place-1 place-2 place-3"
         "place-4 place-5 place-6"
         "place-7 place-8 place-9"
-        "result result result";
+        "btnStart result btnResult";
 }
 
 .key{
+    width: 132px;
     background-color: #61429d;
+    color:#ffff;
     height: 100px;
-    font: 30px;
+    font-size: 50px;
     text-align: center;
     cursor: pointer;
+    padding-top: 40px;
 }
 
 #display{
@@ -60,4 +63,12 @@
 
 .spot-9{
     grid-area: place-9;
+}
+
+.buttonStart{
+    grid-area: btnStart;
+}
+
+.buttonReplay{
+    grid-area: btnReplay;
 }
