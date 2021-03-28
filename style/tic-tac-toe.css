@@ -1,0 +1,63 @@
+#container{
+    background-color: #ffff;
+    width: 400px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+    display: grid;
+    grid-gap: 3px;
+    grid-template-areas:
+        "place-1 place-2 place-3"
+        "place-4 place-5 place-6"
+        "place-7 place-8 place-9"
+        "result result result";
+}
+
+.key{
+    background-color: #61429d;
+    height: 100px;
+    font: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#display{
+    grid-area: result;
+}
+
+.spot-1{
+    grid-area: place-1;
+}
+
+.spot-2{
+    grid-area: place-2;
+}
+
+.spot-3{
+    grid-area: place-3;
+}
+
+.spot-4{
+    grid-area: place-4;
+}
+
+.spot-5{
+    grid-area: place-5;
+}
+
+.spot-6{
+    grid-area: place-6;
+}
+
+.spot-7{
+    grid-area: place-7;
+}
+
+.spot-8{
+    grid-area: place-8;
+}
+
+.spot-9{
+    grid-area: place-9;
+}
