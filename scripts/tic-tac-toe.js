@@ -1,45 +1,82 @@
 var gameOver = false;
 var totalMove = 0;
 var currentPlayer = "X";
+var isPlaying = false;
+
+//start of the game funciton
+function startGame(){
+
+    //checks to see if startBtn has Replay
+    if(document.getElementById('startBtn').innerText === "Replay"){
+        location.reload();
+    }
+    
+    isPlaying = true;
+    var gameDisplay = document.getElementById("display");
+    gameDisplay.innerHTML = "X turn to move.";
+    document.getElementById('startBtn').style.visibility = 'hidden';
+}
 
 function placeMarker(spotClass){
     
-    var spot = document.getElementsByClassName(spotClass); //"key" + " " + 
+    var spot = document.getElementsByClassName(spotClass); 
     var gameDisplay = document.getElementById("display");
 
-    if(spot[0].innerHTML === ""){
+    //start button is pused
+    if(isPlaying === true){
 
-        if(!gameOver){
+        //checks to see if spot is open
+        if(spot[0].innerHTML === ""){
 
-            //update inside of cells
-            if(spot[0].innerHTML == ""){
-                spot[0].innerHTML = currentPlayer;
-            }
-            
-            //case winner of the game
-            if(currentPlayerWon() === true){
-                gameDisplay.innerHTML = currentPlayer + " won, game ended." 
-            }
-
-            else{
-                //tie condition
-                if(totalMove === 8){
-                    gameOver = true;
-                    gameDisplay.innerHTML = "Game ends in a tie."
+            if(!gameOver){
+    
+                //update inside of cells
+                if(spot[0].innerHTML == ""){
+                    spot[0].innerHTML = currentPlayer;
                 }
-                //switch players
-                else if( currentPlayer === "O"){
-                    totalMove++;
-                    currentPlayer = "X";
-                    gameDisplay.innerHTML = currentPlayer + " turn to move."
+                
+                //case winner of the game
+                if(currentPlayerWon() === true){
+                    gameDisplay.innerHTML = currentPlayer + " won, game ended." ;
+                    document.getElementById('startBtn').style.visibility = 'visible';
+                    document.querySelector('#startBtn').innerText = 'Replay';
+                    firstbtn.parentNode.replaceChild(document.getElementById("replayBtn"), document.getElementById("startBtn"));
                 }
+    
                 else{
-                    totalMove++;
-                    currentPlayer = "O";
-                    gameDisplay.innerHTML = currentPlayer + " turn to move."
+                    //tie condition
+                    if(totalMove === 8){
+                        gameOver = true;
+                        gameDisplay.innerHTML = "Game ends in a tie.";
+                        document.getElementById("startBtn").style.visibility = 'visible';
+                        document.querySelector('#startBtn').innerText = 'Replay';
+                    }
+                    //switch players
+                    else if( currentPlayer === "O"){
+                        totalMove++;
+                        currentPlayer = "X";
+                        gameDisplay.innerHTML = currentPlayer + " turn to move.";
+                    }
+                    else{
+                        totalMove++;
+                        currentPlayer = "O";
+                        gameDisplay.innerHTML = currentPlayer + " turn to move.";
+                    }
                 }
             }
         }
+    }
+    else{
+        //disables click to cells if start button not pressed
+        document.getElementsByClassName('spot-1').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-2').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-3').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-4').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-5').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-6').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-7').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-8').style.pointerEvents = 'none';
+        document.getElementsByClassName('spot-9').style.pointerEvents = 'none';
     }
 }
 
